@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas擦除特效</title>
+	<style>
+		html,body{
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		#cas {
+
+			transition: 1s;
+			background: url(images/wipe1.jpg) center center;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cas" width="375" height="667"></canvas>
+</body>
+</html>
+
+<script src="js/swipe-yrx1.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var obj = {
+		id : "cas" ,  //canvas标签的id
+		_w : "375" ,  // canvas的宽
+		_h : "667" ,  // canvas的高
+		radius : "20" ,// 擦除原点的半径
+		coverType : "img" , // canvas的覆盖类型  可以有两种取值范围img或color
+		 //如果是img 则在mask中给出图片路径 如果是color 则需要在mask中给出颜色值
+		mask : "images/01.jpg" ,
+		percent : "50" , // 当透明面积超过此处指定的数字 则提示擦除完成  
+		callback : wancheng //用户自定义回调函数名称
+	}
+	
+	
+	var swipe1 = new Swipe(obj)
+	
+	function wancheng(transPercent){
+		// transPercent为透明面积占总面积的百分比
+		// 擦除完成后 用户自己的逻辑
+		if(transPercent > 50){
+			// alert("擦除完成 是的")
+		}
+		
+	}
+	
+	console.log(swipe1)
+</script>
